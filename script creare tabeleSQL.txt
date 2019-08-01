@@ -1,0 +1,99 @@
+CREATE TABLE furnizor (
+    furnizor_id     NUMBER(5) NOT NULL,
+    nume_furnizor   VARCHAR2(50 CHAR),
+    adresa          VARCHAR2(80 CHAR),
+    email           VARCHAR2(45 CHAR)
+)
+LOGGING;
+
+ALTER TABLE furnizor ADD CONSTRAINT furnizor_pk PRIMARY KEY ( furnizor_id );
+
+
+
+CREATE TABLE contract (
+    contract_id     NUMBER(5) NOT NULL,
+    data_contract   DATE,
+    pret            NUMBER(6),
+    furnizor_id     NUMBER(5) NOT NULL,
+    produse_id      NUMBER(5) NOT NULL
+)
+LOGGING;
+
+ALTER TABLE contract ADD CONSTRAINT contract_pk PRIMARY KEY ( contract_id );
+
+ALTER TABLE contract
+    ADD CONSTRAINT contract_furnizor_fk FOREIGN KEY ( furnizor_id )
+        REFERENCES furnizor ( furnizor_id )
+            ON DELETE CASCADE
+    NOT DEFERRABLE;
+
+ALTER TABLE contract
+    ADD CONSTRAINT contract_produse_fk FOREIGN KEY ( produse_id )
+        REFERENCES produse ( produs_id )
+            ON DELETE CASCADE
+    NOT DEFERRABLE;
+	
+
+CREATE TABLE comanda_stoc (
+    comanda_stoc_id   NUMBER NOT NULL,
+    data_plasare      DATE,
+    data_livrare      DATE,
+    cantitate         NUMBER(6),
+    contract_id       NUMBER(5) NOT NULL
+)
+LOGGING;
+
+ALTER TABLE comanda_stoc ADD CONSTRAINT comanda_stoc_pk PRIMARY KEY ( comanda_stoc_id );
+
+ALTER TABLE comanda_stoc
+    ADD CONSTRAINT comanda_stoc_contract_fk FOREIGN KEY ( contract_id )
+        REFERENCES contract ( contract_id )
+            ON DELETE CASCADE
+    NOT DEFERRABLE;
+
+
+
+CREATE TABLE produse (
+    produs_id            NUMBER(5) NOT NULL,
+    nume_produs          VARCHAR2(20 CHAR),
+    model_produs         VARCHAR2(20 CHAR),
+    pret                 NUMBER(6),
+    producator_id        NUMBER(5) NOT NULL,
+    categorie_sport_id   NUMBER(5) NOT NULL
+)
+LOGGING;
+
+ALTER TABLE produse ADD CONSTRAINT produse_pk PRIMARY KEY ( produs_id );
+
+ALTER TABLE produse
+    ADD CONSTRAINT produse_categorie_sport_fk FOREIGN KEY ( categorie_sport_id )
+        REFERENCES categorie_sport ( categorie_sport_id )
+            ON DELETE CASCADE
+    NOT DEFERRABLE;
+
+ALTER TABLE produse
+    ADD CONSTRAINT produse_producator_fk FOREIGN KEY ( producator_id )
+        REFERENCES producator ( producator_id )
+            ON DELETE CASCADE
+    NOT DEFERRABLE;
+	
+	
+CREATE TABLE categorie_sport (
+    categorie_sport_id   NUMBER(5) NOT NULL,
+    denumire             VARCHAR2(30 CHAR)
+)
+LOGGING;
+
+ALTER TABLE categorie_sport ADD CONSTRAINT categorie_sport_pk PRIMARY KEY ( categorie_sport_id );
+
+
+
+CREATE TABLE producator (
+    producator_id     NUMBER(5) NOT NULL,
+    nume_producator   VARCHAR2(20 CHAR),
+    website           VARCHAR2(20 CHAR),
+    telefon           NUMBER(10)
+)
+LOGGING;
+
+ALTER TABLE producator ADD CONSTRAINT producator_pk PRIMARY KEY ( producator_id );
