@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CATEGORIE_SPORT">
+    <Key>
+      <PropertyRef Name="CATEGORIE_SPORT_ID" />
+    </Key>
+    <Property Name="CATEGORIE_SPORT_ID" Type="number" Precision="5" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DENUMIRE" Type="varchar2" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="COMANDA_STOC">
+    <Key>
+      <PropertyRef Name="COMANDA_STOC_ID" />
+    </Key>
+    <Property Name="COMANDA_STOC_ID" Type="number" Precision="38" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DATA_PLASARE" Type="date" />
+    <Property Name="DATA_LIVRARE" Type="date" />
+    <Property Name="CANTITATE" Type="number" Precision="6" Scale="0" />
+    <Property Name="CONTRACT_ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CONTRACT">
+    <Key>
+      <PropertyRef Name="CONTRACT_ID" />
+    </Key>
+    <Property Name="CONTRACT_ID" Type="number" Precision="5" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DATA_CONTRACT" Type="date" />
+    <Property Name="PRET" Type="number" Precision="6" Scale="0" />
+    <Property Name="FURNIZOR_ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="PRODUSE_ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FURNIZOR">
+    <Key>
+      <PropertyRef Name="FURNIZOR_ID" />
+    </Key>
+    <Property Name="FURNIZOR_ID" Type="number" Precision="5" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NUME_FURNIZOR" Type="varchar2" MaxLength="50" />
+    <Property Name="ADRESA" Type="varchar2" MaxLength="80" />
+    <Property Name="EMAIL" Type="varchar2" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="PRODUCATOR">
+    <Key>
+      <PropertyRef Name="PRODUCATOR_ID" />
+    </Key>
+    <Property Name="PRODUCATOR_ID" Type="number" Precision="5" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NUME_PRODUCATOR" Type="varchar2" MaxLength="20" />
+    <Property Name="WEBSITE" Type="varchar2" MaxLength="20" />
+    <Property Name="TELEFON" Type="number" Precision="10" Scale="0" />
+  </EntityType>
+  <EntityType Name="PRODUSE">
+    <Key>
+      <PropertyRef Name="PRODUS_ID" />
+    </Key>
+    <Property Name="PRODUS_ID" Type="number" Precision="5" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NUME_PRODUS" Type="varchar2" MaxLength="20" />
+    <Property Name="MODEL_PRODUS" Type="varchar2" MaxLength="20" />
+    <Property Name="PRET" Type="number" Precision="6" Scale="0" />
+    <Property Name="PRODUCATOR_ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="CATEGORIE_SPORT_ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+  </EntityType>
+  <Association Name="COMANDA_STOC_CONTRACT_FK">
+    <End Role="CONTRACT" Type="Self.CONTRACT" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="COMANDA_STOC" Type="Self.COMANDA_STOC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONTRACT">
+        <PropertyRef Name="CONTRACT_ID" />
+      </Principal>
+      <Dependent Role="COMANDA_STOC">
+        <PropertyRef Name="CONTRACT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CONTRACT_FURNIZOR_FK">
+    <End Role="FURNIZOR" Type="Self.FURNIZOR" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CONTRACT" Type="Self.CONTRACT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FURNIZOR">
+        <PropertyRef Name="FURNIZOR_ID" />
+      </Principal>
+      <Dependent Role="CONTRACT">
+        <PropertyRef Name="FURNIZOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CONTRACT_PRODUSE_FK">
+    <End Role="PRODUSE" Type="Self.PRODUSE" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CONTRACT" Type="Self.CONTRACT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUSE">
+        <PropertyRef Name="PRODUS_ID" />
+      </Principal>
+      <Dependent Role="CONTRACT">
+        <PropertyRef Name="PRODUSE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PRODUSE_CATEGORIE_SPORT_FK">
+    <End Role="CATEGORIE_SPORT" Type="Self.CATEGORIE_SPORT" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PRODUSE" Type="Self.PRODUSE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORIE_SPORT">
+        <PropertyRef Name="CATEGORIE_SPORT_ID" />
+      </Principal>
+      <Dependent Role="PRODUSE">
+        <PropertyRef Name="CATEGORIE_SPORT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PRODUSE_PRODUCATOR_FK">
+    <End Role="PRODUCATOR" Type="Self.PRODUCATOR" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PRODUSE" Type="Self.PRODUSE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCATOR">
+        <PropertyRef Name="PRODUCATOR_ID" />
+      </Principal>
+      <Dependent Role="PRODUSE">
+        <PropertyRef Name="PRODUCATOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="CATEGORIE_SPORT" EntityType="Self.CATEGORIE_SPORT" Schema="MARIANA" store:Type="Tables" />
+    <EntitySet Name="COMANDA_STOC" EntityType="Self.COMANDA_STOC" Schema="MARIANA" store:Type="Tables" />
+    <EntitySet Name="CONTRACT" EntityType="Self.CONTRACT" Schema="MARIANA" store:Type="Tables" />
+    <EntitySet Name="FURNIZOR" EntityType="Self.FURNIZOR" Schema="MARIANA" store:Type="Tables" />
+    <EntitySet Name="PRODUCATOR" EntityType="Self.PRODUCATOR" Schema="MARIANA" store:Type="Tables" />
+    <EntitySet Name="PRODUSE" EntityType="Self.PRODUSE" Schema="MARIANA" store:Type="Tables" />
+    <AssociationSet Name="COMANDA_STOC_CONTRACT_FK" Association="Self.COMANDA_STOC_CONTRACT_FK">
+      <End Role="CONTRACT" EntitySet="CONTRACT" />
+      <End Role="COMANDA_STOC" EntitySet="COMANDA_STOC" />
+    </AssociationSet>
+    <AssociationSet Name="CONTRACT_FURNIZOR_FK" Association="Self.CONTRACT_FURNIZOR_FK">
+      <End Role="FURNIZOR" EntitySet="FURNIZOR" />
+      <End Role="CONTRACT" EntitySet="CONTRACT" />
+    </AssociationSet>
+    <AssociationSet Name="CONTRACT_PRODUSE_FK" Association="Self.CONTRACT_PRODUSE_FK">
+      <End Role="PRODUSE" EntitySet="PRODUSE" />
+      <End Role="CONTRACT" EntitySet="CONTRACT" />
+    </AssociationSet>
+    <AssociationSet Name="PRODUSE_CATEGORIE_SPORT_FK" Association="Self.PRODUSE_CATEGORIE_SPORT_FK">
+      <End Role="CATEGORIE_SPORT" EntitySet="CATEGORIE_SPORT" />
+      <End Role="PRODUSE" EntitySet="PRODUSE" />
+    </AssociationSet>
+    <AssociationSet Name="PRODUSE_PRODUCATOR_FK" Association="Self.PRODUSE_PRODUCATOR_FK">
+      <End Role="PRODUCATOR" EntitySet="PRODUCATOR" />
+      <End Role="PRODUSE" EntitySet="PRODUSE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

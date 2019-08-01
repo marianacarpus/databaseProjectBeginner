@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="CATEGORIE_SPORT">
+      <EntityTypeMapping TypeName="Model.CATEGORIE_SPORT">
+        <MappingFragment StoreEntitySet="CATEGORIE_SPORT">
+          <ScalarProperty Name="CATEGORIE_SPORT_ID" ColumnName="CATEGORIE_SPORT_ID" />
+          <ScalarProperty Name="DENUMIRE" ColumnName="DENUMIRE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMANDA_STOC">
+      <EntityTypeMapping TypeName="Model.COMANDA_STOC">
+        <MappingFragment StoreEntitySet="COMANDA_STOC">
+          <ScalarProperty Name="COMANDA_STOC_ID" ColumnName="COMANDA_STOC_ID" />
+          <ScalarProperty Name="DATA_PLASARE" ColumnName="DATA_PLASARE" />
+          <ScalarProperty Name="DATA_LIVRARE" ColumnName="DATA_LIVRARE" />
+          <ScalarProperty Name="CANTITATE" ColumnName="CANTITATE" />
+          <ScalarProperty Name="CONTRACT_ID" ColumnName="CONTRACT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONTRACTs">
+      <EntityTypeMapping TypeName="Model.CONTRACT">
+        <MappingFragment StoreEntitySet="CONTRACT">
+          <ScalarProperty Name="CONTRACT_ID" ColumnName="CONTRACT_ID" />
+          <ScalarProperty Name="DATA_CONTRACT" ColumnName="DATA_CONTRACT" />
+          <ScalarProperty Name="PRET" ColumnName="PRET" />
+          <ScalarProperty Name="FURNIZOR_ID" ColumnName="FURNIZOR_ID" />
+          <ScalarProperty Name="PRODUSE_ID" ColumnName="PRODUSE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FURNIZORs">
+      <EntityTypeMapping TypeName="Model.FURNIZOR">
+        <MappingFragment StoreEntitySet="FURNIZOR">
+          <ScalarProperty Name="FURNIZOR_ID" ColumnName="FURNIZOR_ID" />
+          <ScalarProperty Name="NUME_FURNIZOR" ColumnName="NUME_FURNIZOR" />
+          <ScalarProperty Name="ADRESA" ColumnName="ADRESA" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCATORs">
+      <EntityTypeMapping TypeName="Model.PRODUCATOR">
+        <MappingFragment StoreEntitySet="PRODUCATOR">
+          <ScalarProperty Name="PRODUCATOR_ID" ColumnName="PRODUCATOR_ID" />
+          <ScalarProperty Name="NUME_PRODUCATOR" ColumnName="NUME_PRODUCATOR" />
+          <ScalarProperty Name="WEBSITE" ColumnName="WEBSITE" />
+          <ScalarProperty Name="TELEFON" ColumnName="TELEFON" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUSEs">
+      <EntityTypeMapping TypeName="Model.PRODUSE">
+        <MappingFragment StoreEntitySet="PRODUSE">
+          <ScalarProperty Name="PRODUS_ID" ColumnName="PRODUS_ID" />
+          <ScalarProperty Name="NUME_PRODUS" ColumnName="NUME_PRODUS" />
+          <ScalarProperty Name="MODEL_PRODUS" ColumnName="MODEL_PRODUS" />
+          <ScalarProperty Name="PRET" ColumnName="PRET" />
+          <ScalarProperty Name="PRODUCATOR_ID" ColumnName="PRODUCATOR_ID" />
+          <ScalarProperty Name="CATEGORIE_SPORT_ID" ColumnName="CATEGORIE_SPORT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

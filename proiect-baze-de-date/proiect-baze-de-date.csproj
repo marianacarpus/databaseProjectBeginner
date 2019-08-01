@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{20C2107D-0D9A-40A0-B4A8-330E169CA9B3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>proiect_baze_de_date</RootNamespace>
+    <AssemblyName>proiect-baze-de-date</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=4.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.DirectoryServices.Protocols" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="adaugaCategorie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adaugaCategorie.Designer.cs">
+      <DependentUpon>adaugaCategorie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="adaugaComanda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adaugaComanda.Designer.cs">
+      <DependentUpon>adaugaComanda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="adaugaContract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adaugaContract.Designer.cs">
+      <DependentUpon>adaugaContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="adaugaFurnizor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adaugaFurnizor.Designer.cs">
+      <DependentUpon>adaugaFurnizor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="adaugaProducator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adaugaProducator.Designer.cs">
+      <DependentUpon>adaugaProducator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="adaugaProdus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adaugaProdus.Designer.cs">
+      <DependentUpon>adaugaProdus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CATEGORIE_SPORT.cs">
+      <DependentUpon>database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMANDA_STOC.cs">
+      <DependentUpon>database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONTRACT.cs">
+      <DependentUpon>database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>database.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>database.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FURNIZOR.cs">
+      <DependentUpon>database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUCATOR.cs">
+      <DependentUpon>database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUSE.cs">
+      <DependentUpon>database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="adaugaCategorie.resx">
+      <DependentUpon>adaugaCategorie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="adaugaComanda.resx">
+      <DependentUpon>adaugaComanda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="adaugaContract.resx">
+      <DependentUpon>adaugaContract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="adaugaFurnizor.resx">
+      <DependentUpon>adaugaFurnizor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="adaugaProducator.resx">
+      <DependentUpon>adaugaProducator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="adaugaProdus.resx">
+      <DependentUpon>adaugaProdus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EntityDeploy Include="database.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>database.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="database.edmx.diagram">
+      <DependentUpon>database.edmx</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="database.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>database.Context.cs</LastGenOutput>
+      <DependentUpon>database.edmx</DependentUpon>
+    </Content>
+    <Content Include="database.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>database.edmx</DependentUpon>
+      <LastGenOutput>database.cs</LastGenOutput>
+    </Content>
+    <None Include="images\if_150-man-factory-worker-2_3099403 %281%29.ico" />
+    <None Include="images\if_category_59130.ico" />
+    <None Include="images\if_rss-tag_9447.ico" />
+    <None Include="images\power-sports-1015688_960_720.jpg" />
+    <None Include="images\tug-of-war-1013740__340.jpg" />
+    <None Include="images\olympics-1613101_1280.jpg" />
+    <None Include="images\ballet-1553359__340.jpg" />
+    <None Include="images\sport-1019776__340.jpg" />
+    <None Include="images\if_system-software-update_39272.ico" />
+    <None Include="images\if_Gnome-System-Software-Update-64_55762.ico" />
+    <None Include="images\if_edit-delete_23231 %281%29.ico" />
+    <None Include="images\if_view-refresh_118801.ico" />
+    <None Include="images\if_user_close_36968.ico" />
+    <None Include="images\if_data--add_83623.ico" />
+    <None Include="images\if_onebit_42_12616.ico" />
+    <None Include="images\if_sign-add_299068.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
